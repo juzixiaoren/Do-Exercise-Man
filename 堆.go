@@ -33,7 +33,7 @@ func testheap() {
 	heap.Push(h, 5)
 	fmt.Println((*h)[0])
 }
-func main() {
+func ma2in() {
 	testheap()
 
 }

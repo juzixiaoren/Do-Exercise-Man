@@ -1,0 +1,106 @@
+
+type DoublyLinkList struct {
+	Prev *DoublyLinkList
+	Next *DoublyLinkList
+	Val  int
+	Key  int
+}
+
+type LRUCache struct {
+	Head     *DoublyLinkList
+	Tail     *DoublyLinkList
+	capacity int
+	Cache    map[int]*DoublyLinkList
+}
+
+func Constructor(capacity int) LRUCache {
+	head := new(DoublyLinkList)
+	var tail *DoublyLinkList
+	head.Next = tail
+	return LRUCache{
+		Head:     head,
+		Tail:     tail,
+		capacity: capacity,
+		Cache:    make(map[int]*DoublyLinkList),
+	}
+
+}
+
+func (this *LRUCache) Get(key int) int {
+	value, ok := this.Cache[key] //找
+	if !ok {
+		return -1 //没找到
+	} else {
+		value.Prev.Next = value.Next //找到了，将前面断开
+		if value.Next != nil {
+			value.Next.Prev = value.Prev //后面存在将后面断开
+		}
+		value.Next = this.Head.Next //连接到头部后面的那个
+		if this.Head.Next != nil {
+			this.Head.Next.Prev = value //头部后面不为空，将头部后面连接上
+		}
+		this.Head.Next = value //头部连接上
+		value.Prev = this.Head //自己连接上头部
+		for this.Tail.Next != nil {
+			this.Tail = this.Tail.Next //有可能连尾部，将尾部往后移
+		}
+		return value.Val //返回找到的值
+	}
+
+}
+
+func (this *LRUCache) Put(key int, value int) {
+	val, ok := this.Cache[key]
+	if !ok { //缓存中不存在
+		if len(this.Cache) >= this.capacity { //超出缓存大小
+			delete(this.Cache, this.Tail.Key) //删除尾部的缓存
+			this.Tail = this.Tail.Prev        //尾部前移
+			this.Head.Next.Prev = new(DoublyLinkList)
+			this.Head.Next.Prev.Next = this.Head.Next
+			this.Head.Next = this.Head.Next.Prev
+			this.Head.Next.Prev = this.Head
+			this.Head.Next.Val = value
+			this.Head.Next.Key = key
+			this.Cache[key] = this.Head.Next
+			if this.Tail == this.Head {
+				this.Tail = this.Tail.Next
+			} else {
+				this.Tail.Next = nil
+			}
+		} else {
+			if this.Tail == nil {
+				this.Tail = new(DoublyLinkList)
+				this.Tail.Prev = this.Head
+				this.Tail.Val = value
+				this.Tail.Key = key
+				this.Head.Next = this.Tail
+				this.Cache[key] = this.Tail
+				return
+			}
+			this.Head.Next.Prev = new(DoublyLinkList)
+			this.Head.Next.Prev.Next = this.Head.Next
+			this.Head.Next = this.Head.Next.Prev
+			this.Head.Next.Prev = this.Head
+			this.Head.Next.Val = value
+			this.Head.Next.Key = key
+			this.Cache[key] = this.Head.Next
+		}
+	} else {
+		val.Val = value
+		val.Prev.Next = val.Next //找到了，将前面断开
+		if val.Next != nil {
+			val.Next.Prev = val.Prev //后面存在将后面断开
+		}
+		val.Next = this.Head.Next //连接到头部后面的那个
+		if this.Head.Next != nil {
+			this.Head.Next.Prev = val //头部后面不为空，将头部后面连接上
+		}
+		this.Head.Next = val //头部连接上
+		val.Prev = this.Head //自己连接上头部
+		for this.Tail.Next != nil {
+			this.Tail = this.Tail.Next //有可能连尾部，将尾部往后移
+		} //返回找到的值
+	}
+}
+
+/*双向链表+哈希表，这里的尾部是一个真实节点，所以需要处理尾部替换，尾部被 Get 的情况，实际上使用双哨兵会简单很多*/
