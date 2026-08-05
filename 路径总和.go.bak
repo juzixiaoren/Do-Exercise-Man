@@ -1,0 +1,32 @@
+package main
+
+func hasPathSum(root *TreeNode, targetSum int) bool {
+	if root == nil {
+		return false
+	}
+	Sum := 0
+	return Pre(root, targetSum, &Sum)
+
+}
+
+func Pre(root *TreeNode, targetSum int, Sum *int) bool {
+	*Sum += root.Val
+	if root.Right == nil && root.Left == nil && targetSum == *Sum {
+		return true
+	} else if root.Right == nil && root.Left == nil {
+		*Sum -= root.Val
+		return false
+	} else {
+		R1 := false
+		R2 := false
+		if root.Left != nil {
+			R1 = Pre(root.Left, targetSum, Sum)
+		}
+		if root.Right != nil {
+			R2 = Pre(root.Right, targetSum, Sum)
+		}
+		*Sum -= root.Val
+		return R1 || R2
+	}
+
+}
