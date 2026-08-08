@@ -1,0 +1,16 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug current cpp",
+            "type": "cppvsdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}\\.vscode\\bin\\${fileBasenameNoExtension}.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "console": "integratedTerminal",
+            "preLaunchTask": "build current cpp"
+        }
+    ]
+}

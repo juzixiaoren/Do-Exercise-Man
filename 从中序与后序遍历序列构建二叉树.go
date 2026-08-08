@@ -1,6 +1,6 @@
 package main
 
-func buildTree(inorder []int, postorder []int) *TreeNode {
+func buildTree1(inorder []int, postorder []int) *TreeNode {
 	if len(inorder) == 0 {
 		return nil
 	}
