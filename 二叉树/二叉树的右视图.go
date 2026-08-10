@@ -7,7 +7,7 @@ func rightSideView(root *TreeNode) []int {
 	queue := []*TreeNode{}
 	ans := []int{}
 	queue = append(queue, root)
-	for queue.len != 0 {
+	for len(queue) != 0 {
 		index := len(queue)
 		ans = append(ans, queue[index-1].Val)
 		for i := 0; i < index; i++ {
