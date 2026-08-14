@@ -6,18 +6,12 @@ func rotate(matrix [][]int) {
 	n := len(matrix)
 	for i := 0; i < n; i++ {
 		for j := i; j < n; j++ {
-			var temp int
-			temp = matrix[i][j]
-			matrix[i][j] = matrix[j][i]
-			matrix[j][i] = temp
+			matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
 		}
 	}
 	for i := 0; i < n; i++ {
 		for j := 0; j < n/2; j++ {
-			var temp int
-			temp = matrix[i][j]
-			matrix[i][j] = matrix[i][n-1-j]
-			matrix[i][n-1-j] = temp
+			matrix[i][j], matrix[i][n-1-j] = matrix[i][n-1-j], matrix[i][j]
 		}
 	}
 }
