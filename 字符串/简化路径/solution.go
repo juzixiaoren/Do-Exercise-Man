@@ -56,8 +56,14 @@ func simplifyPath2(path string) string {
 			stack = append(stack, part)
 		}
 	}
-
-	return "/" + strings.Join(stack, "/")
+	var ans string
+	for i := 0; i < len(stack); i++ {
+		ans = ans + "/" + stack[i]
+	}
+	if len(ans) == 0 {
+		return "/"
+	}
+	return ans
 } //优化版本，使用 strings.Join 实现
 /*
 给你一个字符串 path ，表示指向某一文件或目录的 Unix 风格 绝对路径 （以 '/' 开头），请你将其转化为 更加简洁的规范路径。

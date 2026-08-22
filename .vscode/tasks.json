@@ -39,6 +39,21 @@
                 "isDefault": true
             },
             "detail": "调试器生成的任务。"
+        },
+        {
+            "label": "go: build current file debug",
+            "type": "process",
+            "command": "go",
+            "args": [
+                "build",
+                "-gcflags=all=-N -l",
+                "-o",
+                "${fileDirname}\\__debug_bin.exe",
+                "${file}"
+            ],
+            "options": {
+                "cwd": "${fileDirname}"
+            }
         }
     ]
 }

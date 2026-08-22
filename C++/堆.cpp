@@ -87,8 +87,8 @@ public:
 	}
 	void buildHeapLinear(int size)
 	{
-		heap.resize(size + 1); // Ö±½Ó·ÖÅä×ã¹»µÄ¿Õ¼ä£¬heap[0]±£³ÖÎªÕ¼Î»·û
-		for (int i = 1; i <= size; i++) // ´ÓË÷Òý1¿ªÊ¼Ìí¼ÓÔªËØ
+		heap.resize(size + 1); // ç›´æŽ¥åˆ†é…è¶³å¤Ÿçš„ç©ºé—´ï¼Œheap[0]ä¿æŒä¸ºå ä½ç¬¦
+		for (int i = 1; i <= size; i++) // ä»Žç´¢å¼•1å¼€å§‹æ·»åŠ å…ƒç´ 
 		{
 			int temp;
 			cin >> temp;
@@ -109,14 +109,14 @@ public:
 	void buildHeapLinearFromFile(const std::string& filename) {
 		std::ifstream file(filename);
 		if (!file.is_open()) {
-			std::cerr << "ÎÞ·¨´ò¿ªÎÄ¼þ: " << filename << std::endl;
+			std::cerr << "æ— æ³•æ‰“å¼€æ–‡ä»¶: " << filename << std::endl;
 			return;
 		}
 
 		std::string line;
 		int number;
 		heap.clear();
-		heap.push_back(0); // ±£ÁôÎ»ÖÃ0ÎªÉÚ±ø
+		heap.push_back(0); // ä¿ç•™ä½ç½®0ä¸ºå“¨å…µ
 
 		while (getline(file, line)) {
 			std::istringstream iss(line);
@@ -125,7 +125,7 @@ public:
 			}
 		}
 
-		// ¹¹½¨×îÐ¡¶Ñ
+		// æž„å»ºæœ€å°å †
 		for (int i = heap.size() / 2; i > 0; --i) {
 			PercDown(i,heap[i]);
 		}
@@ -133,13 +133,13 @@ public:
 	void buildHeapFromFile(const std::string& filename) {
 		std::ifstream file(filename);
 		if (!file.is_open()) {
-			std::cerr << "ÎÞ·¨´ò¿ªÎÄ¼þ: " << filename << std::endl;
+			std::cerr << "æ— æ³•æ‰“å¼€æ–‡ä»¶: " << filename << std::endl;
 			return;
 		}
 		std::string line;
 		int number;
 		heap.clear();
-		heap.push_back(0); // ±£ÁôÎ»ÖÃ0ÎªÉÚ±ø
+		heap.push_back(0); // ä¿ç•™ä½ç½®0ä¸ºå“¨å…µ
 
 		while (getline(file, line)) {
 			std::istringstream iss(line);
@@ -151,60 +151,60 @@ public:
 };
 int main()
 {
-	/*cout<<"ÇëÊäÈëÔªËØ¸öÊý:"<<endl;
+	/*cout<<"è¯·è¾“å…¥å…ƒç´ ä¸ªæ•°:"<<endl;
 	int n;
 	cin>>n;*/
 	//heapTree b;
-	//cout<<"ÇëÊäÈëÔªËØ£¬ÖÐ¼äÓÃ¿Õ¸ñ¸ô¿ª:"<<endl;
+	//cout<<"è¯·è¾“å…¥å…ƒç´ ï¼Œä¸­é—´ç”¨ç©ºæ ¼éš”å¼€:"<<endl;
 	//b.buildHeapLinear(n);
 	////cin>>1 3 2 12 6 4 8 15 14 9 7 5 11 13 10;
-	//cout<<"³õÊ¼¶Ñ:"<<endl;
+	//cout<<"åˆå§‹å †:"<<endl;
 	//b.print();
 	//b.deleteMin();
-	//cout<<"µÚÒ»´ÎÉ¾³ý×îÐ¡ÖµºóµÄ¶Ñ:"<<endl;
+	//cout<<"ç¬¬ä¸€æ¬¡åˆ é™¤æœ€å°å€¼åŽçš„å †:"<<endl;
 	//b.print();
 	//b.deleteMin();
-	//cout<<"µÚ¶þ´ÎÉ¾³ý×îÐ¡ÖµºóµÄ¶Ñ:"<<endl;
+	//cout<<"ç¬¬äºŒæ¬¡åˆ é™¤æœ€å°å€¼åŽçš„å †:"<<endl;
 	//b.print();
 	//b.deleteMin();
-	//cout<<"µÚÈý´ÎÉ¾³ý×îÐ¡ÖµºóµÄ¶Ñ:"<<endl;
+	//cout<<"ç¬¬ä¸‰æ¬¡åˆ é™¤æœ€å°å€¼åŽçš„å †:"<<endl;
 	//b.print();
 	//heapTree a;
-	//cout << "ÇëÊäÈëÔªËØ¸öÊý:" << endl;
+	//cout << "è¯·è¾“å…¥å…ƒç´ ä¸ªæ•°:" << endl;
 	//cin >> n;
-	//cout << "ÇëÊäÈëÔªËØ£¬ÖÐ¼äÓÃ¿Õ¸ñ¸ô¿ª:" << endl;
+	//cout << "è¯·è¾“å…¥å…ƒç´ ï¼Œä¸­é—´ç”¨ç©ºæ ¼éš”å¼€:" << endl;
 	//a.buildHeap(n)
 	////cin>>1 3 2 12 6 4 8 15 14 9 7 5 11 13 10;
-	//cout << "³õÊ¼¶Ñ:" << endl;
+	//cout << "åˆå§‹å †:" << endl;
 	//a.print();
 	//a.deleteMin();
-	//cout<<"µÚÒ»´ÎÉ¾³ý×îÐ¡ÖµºóµÄ¶Ñ:"<<endl;
+	//cout<<"ç¬¬ä¸€æ¬¡åˆ é™¤æœ€å°å€¼åŽçš„å †:"<<endl;
 	//a.print();
 	//a.deleteMin();
-	//cout << "µÚ¶þ´ÎÉ¾³ý×îÐ¡ÖµºóµÄ¶Ñ:" << endl;
+	//cout << "ç¬¬äºŒæ¬¡åˆ é™¤æœ€å°å€¼åŽçš„å †:" << endl;
 	//a.print();
 	//a.deleteMin();
-	//cout << "µÚÈý´ÎÉ¾³ý×îÐ¡ÖµºóµÄ¶Ñ:" << endl;
+	//cout << "ç¬¬ä¸‰æ¬¡åˆ é™¤æœ€å°å€¼åŽçš„å †:" << endl;
 	//a.print();
 	/*heapTree c;*/
-	//cout << "ÇëÊäÈëÔªËØ,ºöÂÔµÚÒ»¸öÊý×Ö:" << endl;
+	//cout << "è¯·è¾“å…¥å…ƒç´ ,å¿½ç•¥ç¬¬ä¸€ä¸ªæ•°å­—:" << endl;
 	//int temp;
 	//cin >> temp;
 	//auto start=chrono::high_resolution_clock::now();
 	//c.buildHeap(n);
 	//auto end = chrono::high_resolution_clock::now();
 	//chrono::duration<double> elapsed = end - start;
-	//cout << "½¨¶ÑÊ±¼ä:" << elapsed.count() << "s" << endl;
+	//cout << "å»ºå †æ—¶é—´:" << elapsed.count() << "s" << endl;
 	////c.print();
 	//heapTree d;
-	//cout << "ÇëÊäÈëÔªËØ,ºöÂÔµÚÒ»¸öÊý×Ö:" << endl;
+	//cout << "è¯·è¾“å…¥å…ƒç´ ,å¿½ç•¥ç¬¬ä¸€ä¸ªæ•°å­—:" << endl;
 	//cin>> temp;
 	//auto start1 = chrono::high_resolution_clock::now();
 	//d.buildHeapLinear(n);
 	////d.print();
 	//auto end1= chrono::high_resolution_clock::now();
 	//chrono::duration<double> elapsed1 = end1 - start1;
-	//cout << "½¨¶ÑÊ±¼ä:" << elapsed1.count()<< "s" << endl;
+	//cout << "å»ºå †æ—¶é—´:" << elapsed1.count()<< "s" << endl;
 	heapTree e;
 	clock_t start;
 	clock_t end;
@@ -213,7 +213,7 @@ int main()
 	end = clock();
 	double time;
 	time=(double)(end - start) / CLOCKS_PER_SEC;
-	cout << "½¨¶ÑÊ±¼ä:" << time << "s" << endl;
+	cout << "å»ºå †æ—¶é—´:" << time << "s" << endl;
 	heapTree f;
 	clock_t start1;
 	clock_t end1;
@@ -222,7 +222,7 @@ int main()
 	end1 = clock();
 	double time1;
 	time1 = (double)(end1 - start1) / CLOCKS_PER_SEC;
-	cout << "½¨¶ÑÊ±¼ä:" << time1 << "s" << endl;
+	cout << "å»ºå †æ—¶é—´:" << time1 << "s" << endl;
 	heapTree g;
 	clock_t start3;
 	clock_t end3;
@@ -231,7 +231,7 @@ int main()
 	end3 = clock();
 	double time3;
 	time3 = (double)(end3 - start3) / CLOCKS_PER_SEC;
-	cout << "½¨¶ÑÊ±¼ä:" << time3 << "s" << endl;
+	cout << "å»ºå †æ—¶é—´:" << time3 << "s" << endl;
 	heapTree h;
 	clock_t start4;
 	clock_t end4;
@@ -240,7 +240,7 @@ int main()
 	end4 = clock();
 	double time4;
 	time4 = (double)(end4 - start4) / CLOCKS_PER_SEC;
-	cout << "½¨¶ÑÊ±¼ä:" << time4 << "s" << endl;
+	cout << "å»ºå †æ—¶é—´:" << time4 << "s" << endl;
 	heapTree i;
 	clock_t start5;
 	clock_t end5;
@@ -249,7 +249,7 @@ int main()
 	end5 = clock();
 	double time5;
 	time5 = (double)(end5 - start5) / CLOCKS_PER_SEC;
-	cout << "½¨¶ÑÊ±¼ä:" << time5 << "s" << endl;
+	cout << "å»ºå †æ—¶é—´:" << time5 << "s" << endl;
 	heapTree j;
 	clock_t start6;
 	clock_t end6;
@@ -258,6 +258,6 @@ int main()
 	end6 = clock();
 	double time6;
 	time6 = (double)(end6 - start6) / CLOCKS_PER_SEC;
-	cout << "½¨¶ÑÊ±¼ä:" << time6 << "s" << endl;
+	cout << "å»ºå †æ—¶é—´:" << time6 << "s" << endl;
 	return 0;
 }

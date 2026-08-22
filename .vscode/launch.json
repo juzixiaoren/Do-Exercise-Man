@@ -13,11 +13,14 @@
             "preLaunchTask": "build current cpp"
         },
         {
-            "name": "Launch Package",
+            "name": "Debug Current Go File",
             "type": "go",
             "request": "launch",
-            "mode": "auto",
-            "program": "${fileDirname}"
+            "mode": "exec",
+            "program": "${fileDirname}\\__debug_bin.exe",
+            "cwd": "${fileDirname}",
+            "console": "integratedTerminal",
+            "preLaunchTask": "go: build current file debug"
         }
     ]
 }

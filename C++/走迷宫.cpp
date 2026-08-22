@@ -115,7 +115,7 @@ int main() {
 				step[t] += 1;
 				if (px == boxp[best].x && py == boxp[best].y) {
 					boxp[best].find = true;
-					continue; // »Øµ½Ñ¡ÏÂÒ»¸ö±¦Ïä
+					continue; // å›åˆ°é€‰ä¸‹ä¸€ä¸ªå®ç®±
 				}
 			}
 			else if ((py + 1 < m) && dist[py + 1][px] == dist[py][px] - 1) {
@@ -123,7 +123,7 @@ int main() {
 				step[t] += 1;
 				if (px == boxp[best].x && py == boxp[best].y) {
 					boxp[best].find = true;
-					continue; // »Øµ½Ñ¡ÏÂÒ»¸ö±¦Ïä
+					continue; // å›åˆ°é€‰ä¸‹ä¸€ä¸ªå®ç®±
 				}
 			}
 			else {
@@ -132,7 +132,7 @@ int main() {
 					step[t] += 1;
 					if (px == boxp[best].x && py == boxp[best].y) {
 						boxp[best].find = true;
-						continue; // »Øµ½Ñ¡ÏÂÒ»¸ö±¦Ïä
+						continue; // å›åˆ°é€‰ä¸‹ä¸€ä¸ªå®ç®±
 					}
 				}
 				else if ((px + 1 < n) && dist[py][px + 1] == dist[py][px] - 1) {
@@ -140,7 +140,7 @@ int main() {
 					step[t] += 1;
 					if (px == boxp[best].x && py == boxp[best].y) {
 						boxp[best].find = true;
-						continue; // »Øµ½Ñ¡ÏÂÒ»¸ö±¦Ïä
+						continue; // å›åˆ°é€‰ä¸‹ä¸€ä¸ªå®ç®±
 					}
 				}
 				else {
